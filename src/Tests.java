@@ -35,7 +35,7 @@ public class Tests {
 //        System.out.println(UBA.toString());
 //        System.out.println(EmpresaA.toString());
 
-        System.out.println("El/los profesional(es) caro(s) es: " + EmpresaA.profesionalesCaros());
+        System.out.println("El/los profesional(es) caro(s) es/son: " + EmpresaA.profesionalesCaros());
 
 
 //        List<String> provinciasProf = new ArrayList<>();
