@@ -35,6 +35,7 @@ public class Tests {
 //        System.out.println(UBA.toString());
 //        System.out.println(EmpresaA.toString());
 
+        System.out.println("El profesional mas barato es: " + EmpresaA.profesionalMasBarato());
         System.out.println("El/los profesional(es) caro(s) es/son: " + EmpresaA.profesionalesCaros());
 
 
