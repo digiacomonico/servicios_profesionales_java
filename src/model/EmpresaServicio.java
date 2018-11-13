@@ -47,17 +47,14 @@ public class EmpresaServicio {
     }
 
     public Profesional profesionalMasBarato(){
+        return profresionalesSortedByHonorarios().get(0);
+    }
+
+    private List<Profesional> profresionalesSortedByHonorarios(){
         List<Profesional> prof = new ArrayList<>();
         prof.addAll(this.profesionales);
-
         Comparator <Profesional> profesionalesPorHonorarios = Comparator.comparing(Profesional::getHonorarios);
-        List<Profesional> sortedProfesional = prof.stream().sorted(profesionalesPorHonorarios).collect(Collectors.toList());
-
-        return sortedProfesional.get(0);
-
-        //prof.sort(Comparator.comparing(p -> p.getHonorarios())).collect(Collectors.toList());
-        //peopleList.sort(Comparator.comparing(Person::getAge));
-        //return prof.stream().sorted((p1,p2)->p1.getHonorarios().compareTo(p2.getHonorarios()))
+        return prof.stream().sorted(profesionalesPorHonorarios).collect(Collectors.toList());
     }
 
 
