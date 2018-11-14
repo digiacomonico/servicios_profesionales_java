@@ -80,6 +80,11 @@ public class EmpresaServicio {
         return prof.stream().filter(p -> (p.getCasaEstudios() !=null)).collect(Collectors.toList());
     }
 
+    private void a(){
+        List<Profesional> prof = new ArrayList<>();
+        prof.addAll(this.profesionales);
+    }
+
 
     @Override
     public String toString() {
