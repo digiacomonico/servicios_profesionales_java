@@ -7,7 +7,8 @@ import java.util.Set;
 public class Profesional {
     protected String casaEstudios;
     protected Integer honorarios;
-    protected Set provinciasHabilitadas = new HashSet();
+    //protected Set provinciasHabilitadas = new HashSet();
+    protected Set <String> provincias = new HashSet();
 
 
     public Profesional() {
@@ -35,18 +36,20 @@ public class Profesional {
     }
 
 
-    public void agregarProvincias(List<String> provincias){
-        this.provinciasHabilitadas.addAll(provincias);
+    public Set<String> getProvincias() {
+        return provincias;
     }
 
-
+    public void setProvincias(Set<String> provincias) {
+        this.provincias = provincias;
+    }
 
     @Override
     public String toString() {
         return "Profesional{" +
                 "casaEstudios='" + casaEstudios + '\'' +
                 ", honorarios=" + honorarios +
-                ", provinciasHabilitadas=" + provinciasHabilitadas +
+                ", provincias=" + provincias +
                 '}';
     }
 }

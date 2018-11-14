@@ -4,11 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.Comparator;
 
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
+
 
 public class EmpresaServicio {
 
-    private Set universidades = new HashSet();
-    private Set profesionales = new HashSet();
+    private Set <Universidad>universidades = new HashSet();
+    private Set <Profesional>profesionales = new HashSet();
     private int honorarioReferencia;
 
 
@@ -28,7 +31,7 @@ public class EmpresaServicio {
         this.profesionales.addAll(profesionales);
     }
 
-    public void RemoverProfesionales(List<Profesional> profesionales){
+    public void removerProfesionales(List<Profesional> profesionales){
         this.profesionales.removeAll(profesionales);
     }
 
@@ -43,7 +46,7 @@ public class EmpresaServicio {
     public List<Profesional> profesionalesCaros(){
         List<Profesional> prof = new ArrayList<>();
         prof.addAll(this.profesionales);
-        return prof.stream().filter(p -> p.getHonorarios() > this.getHonorarioReferencia()).collect(Collectors.toList());
+        return prof.stream().filter(p -> p.getHonorarios() > this.getHonorarioReferencia()).collect(toList());
     }
 
     public Profesional profesionalMasBarato(){
@@ -51,39 +54,50 @@ public class EmpresaServicio {
     }
 
     public List<String> universidadesFormadoras(){
-        return casaEstudioProfesionalesWithoutNull().stream().map(p -> p.getCasaEstudios()).collect(Collectors.toList());
+        return casaEstudioProfesionalesWithoutNull()
+                .stream()
+                .map(p -> p.getCasaEstudios())
+                .collect(toList());
     }
 
+    public long cantidadProfEstudioEn(Universidad universidad){
+        return casaEstudioProfesionalesWithoutNull()
+                .stream()
+                .filter(p -> p.getCasaEstudios().equals(universidad.getNombre()))
+                .count();
+    }
 
-//    public int cantidadProfEstudioEn(Universidad){
-//        List<Universidad> univ = new ArrayList<>();
-//        univ.addAll(this.universidades);
-//
-//        List<Profesional> prof = new ArrayList<>();
-//        prof.addAll(this.profesionales);
-//
-//        prof.stream().filter(p -> p.getCasaEstudios() == univ.stream().filter(u -> u.getNombre()));
-//        return 1;
-//    }
-
+    public boolean provinciaCubierta(String provincia){
+        return provinciasCubiertasProfesionalesWithoutNull().contains(provincia);
+    }
 
     private List<Profesional> profresionalesSortedByHonorarios(){
-        List<Profesional> prof = new ArrayList<>();
-        prof.addAll(this.profesionales);
-        Comparator <Profesional> profesionalesPorHonorarios = Comparator.comparing(Profesional::getHonorarios);
-        return prof.stream().sorted(profesionalesPorHonorarios).collect(Collectors.toList());
+        return profesionales
+                .stream()
+                .sorted(comparing(Profesional::getHonorarios))
+                .collect(toList());
     }
 
     private List<Profesional> casaEstudioProfesionalesWithoutNull(){
-        List<Profesional> prof = new ArrayList<>();
-        prof.addAll(this.profesionales);
-        return prof.stream().filter(p -> (p.getCasaEstudios() !=null)).collect(Collectors.toList());
+        return profesionales.
+                stream()
+                .filter(p -> (p.getCasaEstudios() != null))
+                .collect(toList());
     }
 
-    private void a(){
-        List<Profesional> prof = new ArrayList<>();
-        prof.addAll(this.profesionales);
+    private List<Profesional> provinciasCubiertasProfesionalesWithoutNull(){
+        return profesionales
+                .stream()
+                .filter(p -> (p.getProvincias() !=null))
+                .collect(toList());
     }
+
+//    private List<String> provinciasPWithoutNull(){
+//        return profesionales
+//                .stream()
+//                .map(p -> (p.getProvincias())).toString();
+//    }
+
 
 
     @Override

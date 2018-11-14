@@ -1,7 +1,9 @@
 import model.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Tests {
 
@@ -12,7 +14,14 @@ public class Tests {
         Universidad UBA = new Universidad("Universidad de Buenos Aires");
         EmpresaServicio EmpresaA = new EmpresaServicio();
 
-        nico.setCasaEstudios("Abcd");
+        Set<String> provs = new HashSet<>();
+        provs.add("Buenos Aires");
+        provs.add("Rio Negro");
+
+        nico.setProvincias(provs);
+
+        nico.setCasaEstudios("Universidad de Buenos Aires");
+        pepe.setCasaEstudios("Universidad de Buenos Aires");
         pepe.setHonorarios(1500);
         nico.setHonorarios(1);
         List<Profesional> profVinculados = new ArrayList<>();
@@ -32,14 +41,15 @@ public class Tests {
         unis.add(UBA);
         EmpresaA.agregarUniversidades(unis);
 
-//        System.out.println(nico.toString());
+        System.out.println(EmpresaA.provinciaCubierta("Buenos Aires"));
 //        System.out.println(UBA.toString());
 //        System.out.println(EmpresaA.toString());
-
-        System.out.println("La(s) universidad(es) formadora(s) es/son: " + EmpresaA.universidadesFormadoras());
-        System.out.println("El profesional mas barato es: " + EmpresaA.profesionalMasBarato());
-        System.out.println("El/los profesional(es) caro(s) es/son: " + EmpresaA.profesionalesCaros());
-
+//        System.out.println("La cantidad de profesionales que estudiaron en la UBA son: " + EmpresaA.cantidadProfEstudioEn(UBA));
+//
+//        System.out.println("La(s) universidad(es) formadora(s) es/son: " + EmpresaA.universidadesFormadoras());
+//        System.out.println("El profesional mas barato es: " + EmpresaA.profesionalMasBarato());
+//        System.out.println("El/los profesional(es) caro(s) es/son: " + EmpresaA.profesionalesCaros());
+//
 
 //        List<String> provinciasProf = new ArrayList<>();
 //        provinciasProf.add("Buenos Aires");

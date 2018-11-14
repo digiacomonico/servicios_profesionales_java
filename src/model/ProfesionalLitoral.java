@@ -23,7 +23,7 @@ public class ProfesionalLitoral extends Profesional {
         return "ProfesionalLitoral{" +
                 "casaEstudios='" + casaEstudios + '\'' +
                 ", honorarios=" + honorarios +
-                ", provinciasHabilitadas=" + provinciasHabilitadas +
+                ", provinciasHabilitadas=" + provincias +
                 '}';
     }
 }

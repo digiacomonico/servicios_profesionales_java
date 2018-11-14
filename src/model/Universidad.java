@@ -34,7 +34,9 @@ public class Universidad {
 
     public void setHonorariosRecomendados(int honorariosRecomendados) {
         this.honorariosRecomendados = honorariosRecomendados;
-        getProfesionalesVinculados().stream().forEach(p -> p.setHonorarios(honorariosRecomendados));
+        getProfesionalesVinculados()
+                .stream()
+                .forEach(p -> p.setHonorarios(honorariosRecomendados));
     }
 
 

@@ -17,7 +17,7 @@ public class ProfesionalVinculado extends Profesional {
         return "ProfesionalVinculado{" +
                 "casaEstudios='" + casaEstudios + '\'' +
                 ", honorarios=" + honorarios +
-                ", provinciasHabilitadas=" + provinciasHabilitadas +
+                ", provinciasHabilitadas=" + provincias +
                 '}';
     }
 }

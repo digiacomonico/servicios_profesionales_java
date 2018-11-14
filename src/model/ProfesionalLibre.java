@@ -33,7 +33,7 @@ public class ProfesionalLibre extends Profesional {
                 "totalRecaudado=" + totalRecaudado +
                 ", casaEstudios='" + casaEstudios + '\'' +
                 ", honorarios=" + honorarios +
-                ", provinciasHabilitadas=" + provinciasHabilitadas +
+                ", provinciasHabilitadas=" + provincias +
                 '}';
     }
 }
