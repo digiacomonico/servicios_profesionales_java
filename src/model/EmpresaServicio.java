@@ -50,11 +50,34 @@ public class EmpresaServicio {
         return profresionalesSortedByHonorarios().get(0);
     }
 
+    public List<String> universidadesFormadoras(){
+        return casaEstudioProfesionalesWithoutNull().stream().map(p -> p.getCasaEstudios()).collect(Collectors.toList());
+    }
+
+
+//    public int cantidadProfEstudioEn(Universidad){
+//        List<Universidad> univ = new ArrayList<>();
+//        univ.addAll(this.universidades);
+//
+//        List<Profesional> prof = new ArrayList<>();
+//        prof.addAll(this.profesionales);
+//
+//        prof.stream().filter(p -> p.getCasaEstudios() == univ.stream().filter(u -> u.getNombre()));
+//        return 1;
+//    }
+
+
     private List<Profesional> profresionalesSortedByHonorarios(){
         List<Profesional> prof = new ArrayList<>();
         prof.addAll(this.profesionales);
         Comparator <Profesional> profesionalesPorHonorarios = Comparator.comparing(Profesional::getHonorarios);
         return prof.stream().sorted(profesionalesPorHonorarios).collect(Collectors.toList());
+    }
+
+    private List<Profesional> casaEstudioProfesionalesWithoutNull(){
+        List<Profesional> prof = new ArrayList<>();
+        prof.addAll(this.profesionales);
+        return prof.stream().filter(p -> (p.getCasaEstudios() !=null)).collect(Collectors.toList());
     }
 
 

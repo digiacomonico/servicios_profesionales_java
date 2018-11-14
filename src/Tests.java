@@ -12,6 +12,7 @@ public class Tests {
         Universidad UBA = new Universidad("Universidad de Buenos Aires");
         EmpresaServicio EmpresaA = new EmpresaServicio();
 
+        nico.setCasaEstudios("Abcd");
         pepe.setHonorarios(1500);
         nico.setHonorarios(1);
         List<Profesional> profVinculados = new ArrayList<>();
@@ -35,6 +36,7 @@ public class Tests {
 //        System.out.println(UBA.toString());
 //        System.out.println(EmpresaA.toString());
 
+        System.out.println("La(s) universidad(es) formadora(s) es/son: " + EmpresaA.universidadesFormadoras());
         System.out.println("El profesional mas barato es: " + EmpresaA.profesionalMasBarato());
         System.out.println("El/los profesional(es) caro(s) es/son: " + EmpresaA.profesionalesCaros());
 
